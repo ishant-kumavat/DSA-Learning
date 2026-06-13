@@ -1,3 +1,5 @@
+// LeetCode 540 -> **Single Element in a Sorted Array**
+
 // 1). Brute Force Approach => Linear Search
 //     Time Complexity : O(n)
 //     Space Complexity : O(1)
