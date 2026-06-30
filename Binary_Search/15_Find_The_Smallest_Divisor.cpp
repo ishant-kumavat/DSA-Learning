@@ -54,6 +54,8 @@ public:
     }
 };
 
+// ceil(a / b) = (a + b - 1) / b
+
 // The answer lies between 1 and the maximum element.
 // If a divisor satisfies the threshold,
 // every larger divisor will also satisfy it.
