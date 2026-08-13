@@ -1,8 +1,49 @@
 // GeeksforGeeks ** Cycle Length in Linked List **
 
-// Optimal Solution => Tortoise and Hare 
-// Time Complexity : O(n)
-// Space Complexity : O(1)
+// 1). Better Solution => Hash Set
+//     Time Complexity : O(n) average case
+//     Space Complexity : O(n)
+
+#include <bits/stdc++.h>
+using namespace std;
+// Structure of Linked List Node
+class Node {
+ public:
+    int data;
+    Node *next;
+
+    Node(int x) {
+        data = x;
+        next = NULL;
+    }
+};
+class Solution {
+  public:
+    int lengthOfLoop(Node *head) {
+        unordered_set<Node*> st;
+        Node* temp = head;
+        while(temp != nullptr){
+            if(st.count(temp)){
+                int cnt = 1;
+                Node* cpy = temp;
+                temp = temp -> next;
+                while(cpy != temp){
+                    cnt++;
+                    temp = temp -> next;
+                }
+                return cnt;
+            }
+            st.insert(temp);
+            temp = temp -> next;
+        }
+        return 0;
+    }
+};
+
+// 2). Optimal Solution => Tortoise and Hare 
+//     Time Complexity : O(n)
+//     Space Complexity : O(1)
+
 #include <bits/stdc++.h>
 using namespace std;
 // Structure of Linked List Node
