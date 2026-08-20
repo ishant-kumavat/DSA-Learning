@@ -1,5 +1,7 @@
 // LeetCode 24 => ** Swap Nodes in Pairs **
 
+// # (Good Question) #
+
 // Optimal Solution => Iterative Pointer Manipulation
 // Time Complexity : O(n)
 // Space Complexity : O(1)
@@ -19,7 +21,7 @@ public:
     ListNode* swapPairs(ListNode* head) {
         if(head == nullptr || head -> next == nullptr) return head;
         ListNode* temp = head;
-        ListNode* ADnode = nullptr;
+        ListNode* ADnode = nullptr; // ADnode : adjacent node
         ListNode* prev = nullptr;
         while(temp != nullptr){
             ADnode = temp -> next;
@@ -47,6 +49,5 @@ public:
 // 3. Reverse the link between the two nodes.
 // 4. Connect the previous pair with the current pair.
 // 5. Move to the next pair.
-//
 // If only one node is left,
 // keep it unchanged.
