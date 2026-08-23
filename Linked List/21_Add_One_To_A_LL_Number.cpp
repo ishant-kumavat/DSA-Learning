@@ -1,5 +1,8 @@
 // GFG => Add 1 to a Linked List Number 
 
+// Optimal Solution => Reverse + Carry Propagation
+// Time Complexity : O(n)
+// Space Complexity : O(1)
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -52,3 +55,20 @@ class Solution {
         
     }
 };
+
+// Reverse the linked list
+// so that the least significant digit
+// comes first.
+//
+// Add 1 to the reversed list
+// and propagate the carry.
+//
+// If a digit becomes 10,
+// set it to 0 and continue the carry.
+//
+// Reverse the list again
+// to restore the original order.
+//
+// If carry is still 1 after processing
+// the entire list, create a new node
+// with value 1 at the beginning.
