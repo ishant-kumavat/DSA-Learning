@@ -1,8 +1,8 @@
 // GFG => Add 1 to a Linked List Number 
 
-// Optimal Solution => Reverse + Carry Propagation
-// Time Complexity : O(n)
-// Space Complexity : O(1)
+// 1). Optimal Solution => Reverse + Carry Propagation
+//     Time Complexity : O(n)
+//     Space Complexity : O(1)
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -52,7 +52,6 @@ class Solution {
             head = newnode;
         }
         return head;
-        
     }
 };
 
@@ -72,3 +71,62 @@ class Solution {
 // If carry is still 1 after processing
 // the entire list, create a new node
 // with value 1 at the beginning.
+
+
+// 2). Recursive Solution => Recursion + Carry Propagation
+//     Time Complexity : O(n)
+//     Space Complexity : O(n) -> Recursive Call Stack
+
+#include <bits/stdc++.h>
+using namespace std;
+// Structure of linked list Node
+class Node {
+public:
+    int data;
+    Node* next;
+
+    Node(int x) {
+        data = x;
+        next = nullptr;
+    }
+};
+class Solution {
+  public:
+    int add_one_LL(Node* temp){
+        if(temp == nullptr) return 1;
+        int carry = add_one_LL(temp -> next);
+        temp -> data += carry;
+        if(temp -> data == 10){
+            temp -> data = 0;
+            return 1;
+        }
+        return 0;
+    }
+    Node* addOne(Node* head) {
+        int carry = add_one_LL(head);
+        if(carry == 1){
+            Node* newnode = new Node(1);
+            newnode -> next = head;
+            head = newnode;
+        }
+        return head;
+    }
+};
+
+// Recursively reach the last node
+// because the last node contains
+// the least significant digit.
+//
+// The base case returns carry = 1,
+// representing the +1 operation.
+//
+// At every node:
+// - Add the received carry.
+// - If the digit becomes 10,
+//   make it 0 and return carry = 1.
+// - Otherwise, return carry = 0.
+//
+// After processing the first node,
+// if carry is still 1,
+// create a new node with value 1
+// at the beginning.
