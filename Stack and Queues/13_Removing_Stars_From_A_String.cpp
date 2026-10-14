@@ -31,7 +31,8 @@
     public:
         string removeStars(string s) {
             string ans = "";
-            for(auto &it : s){
+            string ans = "";
+            for(char it : s){
                 if(it == '*') ans.pop_back();
                 else ans.push_back(it);
             }
@@ -39,13 +40,12 @@
         }
     };
 
-    // Treat the string `ans` as a stack.
-    //
-    // If the current character is a letter,
-    // push it into `ans`.
-    //
-    // If the current character is '*',
-    // remove the last character from `ans`.
-    //
-    // This simulates removing the closest
-    // non-star character to the left of each star.
+// Treat the stack or string as a stack.
+//
+// If the current character is '*',
+// remove the last stored character.
+//
+// Otherwise, add the current character.
+//
+// This removes the closest non-star character
+// to the left of each star.
