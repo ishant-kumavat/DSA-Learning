@@ -1,25 +1,48 @@
-// LeetCode 3136 => ** Valid Word **
+// LeetCode 3136 => Valid Word
+
+// Optimal Solution => Character Checking
+// Time Complexity : O(n)
+// Space Complexity : O(1)
 
 #include <bits/stdc++.h>
 using namespace std;
 class Solution {
 public:
     bool isValid(string word) {
-        int n = word.size();
+        if(word.size() < 3) return false;
 
-        if(n < 3) return false;
+        bool vowel = false, consonant = false;
 
-        int cnt1 = 0, cnt2 = 0;
+        for(char ch : word) {
+            if(!isalnum(ch)) return false;
 
-        for(char &it : word){
-            if(!isalnum(it)) return false;
-            if(it >= '0' && it <= '9') continue;
-            char x = tolower(it);
-            if(x == 'a' || x == 'e' || x == 'i' || x == 'o' || x == 'u') cnt1 = 1;
-            else cnt2 = 1;
+            if(isdigit(ch)) continue;
+
+            ch = tolower(ch);
+
+            if(ch == 'a' || ch == 'e' || ch == 'i' ||
+               ch == 'o' || ch == 'u') {
+                vowel = true;
+            }
+            else {
+                consonant = true;
+            }
         }
 
-        if(cnt1 && cnt2) return true;
-        return false;
+        return vowel && consonant;
     }
 };
+
+// Check whether the word contains at least 3 characters.
+//
+// Traverse each character of the string:
+// 1. If the character is not alphanumeric, return false.
+// 2. If it is a digit, skip it.
+// 3. Convert the character to lowercase.
+// 4. If it is a vowel, mark vowel = true.
+// 5. Otherwise, mark consonant = true.
+//
+// A valid word must contain at least one vowel
+// and at least one consonant.
+//
+// Return true if both conditions are satisfied.
